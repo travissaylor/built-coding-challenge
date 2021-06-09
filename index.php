@@ -1,8 +1,10 @@
 <?php
 
-require_once('Movie.php');
-require_once('Rental.php');
-require_once('Customer.php');
+require __DIR__ . '/vendor/autoload.php';
+
+use App\Customer;
+use App\Movie;
+use App\Rental;
 
 $rental1 = new Rental(
     new Movie(

@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Movie
 {
     const CHILDRENS = 2;

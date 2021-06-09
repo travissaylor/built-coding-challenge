@@ -1,0 +1,14 @@
+{
+    "name": "travis-saylor/build-coding-challenge",
+    "description": "Coding challenge for Built Technologies",
+    "authors": [
+        {
+            "name": "Travis Saylor",
+            "email": "travis.saylor@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"App\\": "src/"}
+    }
+}
