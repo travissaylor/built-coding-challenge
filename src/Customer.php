@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Builders\TemplateBuilder;
+
 class Customer
 {
     /**
@@ -13,6 +15,10 @@ class Customer
      * @var Rental[]
      */
     private $rentals;
+
+    protected $totalOwedAmount;
+
+    protected $frequentRenterPoints;
 
     /**
      * @param string $name
@@ -84,5 +90,20 @@ class Customer
         $result .= 'You earned ' . $frequentRenterPoints . ' frequent renter points' . PHP_EOL;
 
         return $result;
+    }
+
+    /**
+     * Needs
+     * 
+     * - name
+     * - rental name & 
+     */
+    public function htmlStatement()
+    {
+        $templateBuilder = new TemplateBuilder();
+        $templateBuilder->renderTemplate('customerStatement', [
+            'name' => $this->name,
+            'rentals' => $this->rentals,
+        ]);
     }
 }

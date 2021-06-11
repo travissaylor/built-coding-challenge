@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/loader.php';
 
 use App\Customer;
 use App\Movie;
