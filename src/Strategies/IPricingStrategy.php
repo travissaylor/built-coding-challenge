@@ -4,5 +4,5 @@ namespace App\Strategies;
 
 interface IPricingStrategy
 {
-    public function caclulatePrice();
+    public function caclulatePrice(int $daysRented);
 }

@@ -2,28 +2,32 @@
 
 require __DIR__ . '/loader.php';
 
+use App\Classification;
 use App\Customer;
 use App\Movie;
 use App\Rental;
+use App\Strategies\ChildrensPricingStrategy;
+use App\Strategies\NewReleasePricingStrategy;
+use App\Strategies\RegularPricingStrategy;
 
 $rental1 = new Rental(
     new Movie(
         'Back to the Future',
-        Movie::CHILDRENS
+        new Classification('Childrens', new ChildrensPricingStrategy())
     ), 4
 );
 
 $rental2 = new Rental(
     new Movie(
         'Office Space',
-        Movie::REGULAR
+        new Classification('Commedy', new RegularPricingStrategy())
     ), 3
 );
 
 $rental3 = new Rental(
     new Movie(
         'The Big Lebowski',
-        Movie::NEW_RELEASE
+        new Classification('Commedy', new NewReleasePricingStrategy())
     ), 5
 );
 
@@ -33,4 +37,4 @@ $customer->addRental($rental1);
 $customer->addRental($rental2);
 $customer->addRental($rental3);
 
-echo $customer->statement();
+echo $customer->newStatement();

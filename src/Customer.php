@@ -92,6 +92,32 @@ class Customer
         return $result;
     }
 
+    public function newStatement()
+    {
+        $totalAmount = 0;
+        $frequentRenterPoints = 0;
+
+        $result = 'Rental Record for ' . $this->name() . PHP_EOL;
+
+        foreach ($this->rentals as $rental) {
+            $thisAmount = $rental->movie()->classification()->getPrice($rental->daysRented());
+
+            $totalAmount += $thisAmount;
+
+            $frequentRenterPoints++;
+            // if ($rental->movie()->priceCode() === Movie::NEW_RELEASE && $rental->daysRented() > 1) {
+            //     $frequentRenterPoints++;
+            // }
+
+            $result .= "\t" . str_pad($rental->movie()->name(), 30, ' ', STR_PAD_RIGHT) . "\t" . $thisAmount . PHP_EOL;
+        }
+
+        $result .= 'Amount owed is ' . $totalAmount . PHP_EOL;
+        $result .= 'You earned ' . $frequentRenterPoints . ' frequent renter points' . PHP_EOL;
+
+        return $result;
+    }
+
     /**
      * Needs
      * 

@@ -21,8 +21,8 @@ class Classification
         return $this->name;
     }
 
-    public function getPrice()
+    public function getPrice(int $daysRented)
     {
-        return $this->pricingStragegy->caclulatePrice();
+        return $this->pricingStragegy->caclulatePrice($daysRented);
     }
 }

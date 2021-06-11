@@ -11,21 +11,18 @@ class Movie
     /**
      * @var string
      */
-    private $name;
+    private string $name;
 
-    /**
-     * @var int
-     */
-    private $priceCode;
+    protected Classification $classification;
 
     /**
      * @param string $name
      * @param int $priceCode
      */
-    public function __construct($name, $priceCode)
+    public function __construct(string $name, Classification $classification)
     {
         $this->name = $name;
-        $this->priceCode = $priceCode;
+        $this->classification = $classification;
     }
 
     /**
@@ -36,11 +33,8 @@ class Movie
         return $this->name;
     }
 
-    /**
-     * @return int
-     */
-    public function priceCode()
+    public function classification()
     {
-        return $this->priceCode;
+        return $this->classification;
     }
 }
