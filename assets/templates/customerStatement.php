@@ -1,8 +1,20 @@
-<h1>Rental Record for <em><?= $this->e($name) ?></em></h1>
+<?php
+    $totalAmount = 0;
+    $frequentRenterPoints = 0;
+?>
+
+<h1>Rental Record for <em><?= $name ?></em></h1>
 <ul>
-    <li>Back to the Future - 3</li>
-    <li>Office Space - 3.5</li>
-    <li>The Big Lebowski - 15</li>
+    <?php foreach($rentals as $rental) : ?>
+        <?php
+            $thisAmount = $rental->movie()->classification()->getPrice($rental->daysRented());
+
+            $totalAmount += $thisAmount;
+
+            $frequentRenterPoints += $rental->getRewardPoints();
+        ?>
+        <li><?= $rental->movie()->name() ?> - <?= $thisAmount ?></li>
+    <?php endforeach; ?>
 </ul>
-<p>Amount owed is <em>21.5</em>
-<p>You earned <em>4</em> frequent renter points</p>
+<p>Amount owed is <em><?= $totalAmount ?></em>
+<p>You earned <em><?= $frequentRenterPoints ?></em> frequent renter points</p>

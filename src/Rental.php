@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Strategies\IRewardPointsStrategy;
+
 class Rental
 {
     /**
@@ -14,14 +16,17 @@ class Rental
      */
     private $daysRented;
 
+    protected IRewardPointsStrategy $rewardPointsStrategy;
+
     /**
      * @param Movie $movie
      * @param int $daysRented
      */
-    public function __construct(Movie $movie, $daysRented)
+    public function __construct(Movie $movie, int $daysRented, IRewardPointsStrategy $rewardPointsStrategy)
     {
         $this->movie = $movie;
         $this->daysRented = $daysRented;
+        $this->rewardPointsStrategy = $rewardPointsStrategy;
     }
 
     /**
@@ -38,5 +43,10 @@ class Rental
     public function daysRented()
     {
         return $this->daysRented;
+    }
+
+    public function getRewardPoints()
+    {
+        return $this->rewardPointsStrategy->caclulateRewardPoints($this);
     }
 }

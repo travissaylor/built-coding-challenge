@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Strategies\IPricingStrategy;
+use App\Strategies\IRewardPointsStrategy;
 
 class Classification
 {
@@ -10,13 +11,13 @@ class Classification
 
     protected IPricingStrategy $pricingStragegy;
 
-    public function __construct($name, $pricingStragegy)
+    public function __construct(string $name, IPricingStrategy $pricingStragegy)
     {
         $this->name = $name;
         $this->pricingStragegy = $pricingStragegy;
     }
 
-    public function getName()
+    public function name()
     {
         return $this->name;
     }

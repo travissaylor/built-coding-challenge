@@ -12,6 +12,6 @@ class TemplateBuilder
         $templatePath = ConfigLoader::config('templateDirectory');
 
         $templates = new Engine($templatePath);
-        echo $templates->render($file, $data);
+        return $templates->render($file, $data);
     }
 }
