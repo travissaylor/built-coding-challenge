@@ -6,10 +6,10 @@ use App\Classification;
 use App\Customer;
 use App\Movie;
 use App\Rental;
-use App\Strategies\ChildrensPricingStrategy;
-use App\Strategies\NewReleasePricingStrategy;
-use App\Strategies\RegularPricingStrategy;
-use App\Strategies\StandardRewardPointsStrategy;
+use App\Strategies\PricingStrategy\ChildrensPricingStrategy;
+use App\Strategies\PricingStrategy\NewReleasePricingStrategy;
+use App\Strategies\PricingStrategy\RegularPricingStrategy;
+use App\Strategies\RewardPointsStrategy\StandardRewardPointsStrategy;
 
 $rental1 = new Rental(
     new Movie(

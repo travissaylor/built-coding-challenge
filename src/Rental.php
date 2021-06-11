@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Strategies\IRewardPointsStrategy;
+use App\Strategies\RewardPointsStrategy\IRewardPointsStrategy;
 
 class Rental
 {

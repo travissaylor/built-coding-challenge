@@ -1,17 +1,17 @@
 <?php
-    $totalAmount = 0;
-    $frequentRenterPoints = 0;
+$totalAmount = 0;
+$frequentRenterPoints = 0;
 ?>
 
 <h1>Rental Record for <em><?= $name ?></em></h1>
 <ul>
-    <?php foreach($rentals as $rental) : ?>
+    <?php foreach ($rentals as $rental) : ?>
         <?php
-            $thisAmount = $rental->movie()->classification()->getPrice($rental->daysRented());
+        $thisAmount = $rental->movie()->classification()->getPrice($rental->daysRented());
 
-            $totalAmount += $thisAmount;
+        $totalAmount += $thisAmount;
 
-            $frequentRenterPoints += $rental->getRewardPoints();
+        $frequentRenterPoints += $rental->getRewardPoints();
         ?>
         <li><?= $rental->movie()->name() ?> - <?= $thisAmount ?></li>
     <?php endforeach; ?>

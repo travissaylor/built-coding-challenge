@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Strategies;
+namespace App\Strategies\PricingStrategy;
 
 class ChildrensPricingStrategy implements IPricingStrategy
 {

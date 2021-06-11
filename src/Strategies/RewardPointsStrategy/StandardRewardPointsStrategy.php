@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Strategies;
+namespace App\Strategies\RewardPointsStrategy;
 
 use App\Rental;
 

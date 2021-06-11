@@ -2,8 +2,7 @@
 
 namespace App;
 
-use App\Strategies\IPricingStrategy;
-use App\Strategies\IRewardPointsStrategy;
+use App\Strategies\PricingStrategy\IPricingStrategy;
 
 class Classification
 {
