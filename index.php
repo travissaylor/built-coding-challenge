@@ -4,39 +4,28 @@ require __DIR__ . '/loader.php';
 
 use App\Classification;
 use App\Customer;
+use App\Factories\ConfigRentalFactory;
 use App\Movie;
-use App\Rental;
 use App\Strategies\PricingStrategy\ChildrensPricingStrategy;
 use App\Strategies\PricingStrategy\NewReleasePricingStrategy;
 use App\Strategies\PricingStrategy\RegularPricingStrategy;
-use App\Strategies\RewardPointsStrategy\StandardRewardPointsStrategy;
 
-$rental1 = new Rental(
-    new Movie(
-        'Back to the Future',
-        new Classification('Childrens', new ChildrensPricingStrategy())
-    ),
-    4,
-    new StandardRewardPointsStrategy()
-);
+$rentalFactory = new ConfigRentalFactory();
 
-$rental2 = new Rental(
-    new Movie(
-        'Office Space',
-        new Classification('Regular', new RegularPricingStrategy())
-    ),
-    3,
-    new StandardRewardPointsStrategy()
-);
+$rental1 = $rentalFactory->createRental(new Movie(
+    'Back to the Future',
+    new Classification('childrens', new ChildrensPricingStrategy())
+), 4);
 
-$rental3 = new Rental(
-    new Movie(
-        'The Big Lebowski',
-        new Classification('New Release', new NewReleasePricingStrategy())
-    ),
-    5,
-    new StandardRewardPointsStrategy()
-);
+$rental2 = $rentalFactory->createRental(new Movie(
+    'Office Space',
+    new Classification('regular', new RegularPricingStrategy())
+), 3);
+
+$rental3 = $rentalFactory->createRental(new Movie(
+    'The Big Lebowski',
+    new Classification('new_release', new NewReleasePricingStrategy())
+), 5);
 
 $customer = new Customer('Joe Schmoe');
 
