@@ -6,5 +6,11 @@ use App\Rental;
 
 interface IRewardPointsStrategy
 {
-    public function caclulateRewardPoints(Rental $rental);
+    /**
+     * Calculates the reward points generated from a specific rental
+     *
+     * @param Rental $rental
+     * @return integer
+     */
+    public function caclulateRewardPoints(Rental $rental): int;
 }

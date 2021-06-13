@@ -9,18 +9,22 @@ class Rental
     /**
      * @var Movie
      */
-    private $movie;
+    protected Movie $movie;
 
     /**
      * @var int
      */
-    private $daysRented;
+    protected int $daysRented;
 
+    /**
+     * @var IRewardPointsStrategy
+     */
     protected IRewardPointsStrategy $rewardPointsStrategy;
 
     /**
      * @param Movie $movie
-     * @param int $daysRented
+     * @param integer $daysRented
+     * @param IRewardPointsStrategy $rewardPointsStrategy
      */
     public function __construct(Movie $movie, int $daysRented, IRewardPointsStrategy $rewardPointsStrategy)
     {
@@ -32,7 +36,7 @@ class Rental
     /**
      * @return Movie
      */
-    public function movie()
+    public function movie(): Movie
     {
         return $this->movie;
     }
@@ -40,12 +44,15 @@ class Rental
     /**
      * @return int
      */
-    public function daysRented()
+    public function daysRented(): int
     {
         return $this->daysRented;
     }
 
-    public function getRewardPoints()
+    /**
+     * @return integer
+     */
+    public function getRewardPoints(): int
     {
         return $this->rewardPointsStrategy->caclulateRewardPoints($this);
     }

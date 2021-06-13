@@ -9,12 +9,12 @@ class Customer
     /**
      * @var string
      */
-    private $name;
+    protected string $name;
 
     /**
      * @var Rental[]
      */
-    private $rentals;
+    protected array $rentals;
 
     /**
      * @param string $name
@@ -28,20 +28,24 @@ class Customer
     /**
      * @return string
      */
-    public function name()
+    public function name(): string
     {
         return $this->name;
     }
 
     /**
      * @param Rental $rental
+     * @return void
      */
-    public function addRental(Rental $rental)
+    public function addRental(Rental $rental): void
     {
         $this->rentals[] = $rental;
     }
 
-    public function statement()
+    /**
+     * @return string
+     */
+    public function statement(): string
     {
         $totalAmount = 0;
         $frequentRenterPoints = 0;
@@ -65,12 +69,11 @@ class Customer
     }
 
     /**
-     * Needs
-     * 
-     * - name
-     * - rental name & 
+     * Return statement in HTML format
+     *
+     * @return string
      */
-    public function htmlStatement()
+    public function htmlStatement(): string
     {
         $templateBuilder = new TemplateBuilder();
         return $templateBuilder->renderTemplate('customerStatement', [

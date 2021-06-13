@@ -6,7 +6,7 @@ use App\Rental;
 
 class StandardRewardPointsStrategy implements IRewardPointsStrategy
 {
-    public function caclulateRewardPoints(Rental $rental)
+    public function caclulateRewardPoints(Rental $rental): int
     {
         if ($rental->movie()->classification()->name() === "New Release" && $rental->daysRented() > 1) {
             return 2;

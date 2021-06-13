@@ -6,7 +6,14 @@ use Noodlehaus\Config;
 
 class ConfigLoader
 {
-    public static function config($dots, $default = null)
+    /**
+     * Get an item from the specified config
+     *
+     * @param string $dots
+     * @param mixed $default
+     * @return mixed
+     */
+    public static function config(string $dots, $default = null)
     {
         $conf = new Config(BASE_PATH . '/config/app.php');
 

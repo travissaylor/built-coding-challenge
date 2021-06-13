@@ -4,9 +4,12 @@ namespace App\Strategies\PricingStrategy;
 
 class RegularPricingStrategy implements IPricingStrategy
 {
+    /**
+     * @var float
+     */
     protected float $standardPrice = 2;
 
-    public function caclulatePrice(int $daysRented)
+    public function caclulatePrice(int $daysRented): float
     {
         $thisAmount = $this->standardPrice;
 

@@ -7,8 +7,11 @@ class Movie
     /**
      * @var string
      */
-    private string $name;
+    protected string $name;
 
+    /**
+     * @var Classification
+     */
     protected Classification $classification;
 
     /**
@@ -24,12 +27,15 @@ class Movie
     /**
      * @return string
      */
-    public function name()
+    public function name(): string
     {
         return $this->name;
     }
 
-    public function classification()
+    /**
+     * @return Classification
+     */
+    public function classification(): Classification
     {
         return $this->classification;
     }
